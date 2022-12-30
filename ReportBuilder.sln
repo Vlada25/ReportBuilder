@@ -5,6 +5,10 @@ VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportBuilder.API", "ReportBuilder.API\ReportBuilder.API.csproj", "{C37B4DD5-4AB4-425B-BFDB-CB1CFB35C78C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportBuilder.DAL", "ReportBuilder.DAL\ReportBuilder.DAL.csproj", "{A75F1CC5-6E8D-49F2-814B-900D05688369}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportBuilder.BLL", "ReportBuilder.BLL\ReportBuilder.BLL.csproj", "{4076B224-7D58-49CD-A263-966A6EB22A12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{C37B4DD5-4AB4-425B-BFDB-CB1CFB35C78C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C37B4DD5-4AB4-425B-BFDB-CB1CFB35C78C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C37B4DD5-4AB4-425B-BFDB-CB1CFB35C78C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A75F1CC5-6E8D-49F2-814B-900D05688369}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A75F1CC5-6E8D-49F2-814B-900D05688369}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A75F1CC5-6E8D-49F2-814B-900D05688369}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A75F1CC5-6E8D-49F2-814B-900D05688369}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4076B224-7D58-49CD-A263-966A6EB22A12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4076B224-7D58-49CD-A263-966A6EB22A12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4076B224-7D58-49CD-A263-966A6EB22A12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4076B224-7D58-49CD-A263-966A6EB22A12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
