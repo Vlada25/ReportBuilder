@@ -1,3 +1,5 @@
+using AutoMapper;
+using ReportBuilder.API.Extensions;
 using ReportBuilder.BLL;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,7 +8,18 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddScoped<LabPdfWriter>();
+builder.Services.ConfigureCors();  
+builder.Services.ConfigureIISIntegration();
+builder.Services.ConfigureSqlContext(builder.Configuration);
+builder.Services.ConfigureDbManagers();
+
+var mappingConfig = new MapperConfiguration(mc =>
+{
+    mc.AddProfile(new MappingProfile());
+});
+
+IMapper autoMapper = mappingConfig.CreateMapper();
+builder.Services.AddSingleton(autoMapper);
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

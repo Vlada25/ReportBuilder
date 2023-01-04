@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using ReportBuilder.BLL;
+using ReportBuilder.BLL.Domain;
+using ReportBuilder.BLL.Interfaces;
 using ReportBuilder.DAL.Models;
 
 namespace ReportBuilder.API.Controllers
@@ -12,26 +15,20 @@ namespace ReportBuilder.API.Controllers
         private readonly string _fontpath = @"..\fonts\TimesNewRomanRegular.ttf";
 
         private readonly LabPdfWriter _pdfWriter;
+        private readonly ILabsTemplateService _labsTemplateService;
+        private readonly IMapper _mapper;
 
-        public ReportsController(LabPdfWriter pdfWriter)
+        public ReportsController(LabPdfWriter pdfWriter, ILabsTemplateService labsTemplateService, IMapper mapper)
         {
             _pdfWriter = pdfWriter;
+            _labsTemplateService = labsTemplateService;
+            _mapper = mapper;
         }
 
         [HttpPost]
-        public IActionResult CreateDocument(string filename, int labNumber)
+        public async Task<IActionResult> CreateDocument(string filename, int labNumber)
         {
-            LabsTemplate labTemplate = new LabsTemplate
-            {
-                Number = 1,
-                Theme = "Статические характеристики датчиков тока и напряжения",
-                Purpose = "\n               1. Изучить принцип работы датчиков тока и напряжения\n" +
-                        "               2. Исследовать статические характеристики датчиков тока и напряжения",
-                Conclusion = "в ходе лабораторной работы изучил принцип работы датчиков тока и напряжения, а также на практике " +
-                        "исследовал статические характеристики этих датчиков. По результатам  экспериментальных измерений было " +
-                        "доказано, что зависимости измеряемых величин от входных значений имеют линейный характер, что облегчает съем " +
-                        "измеряемых величин."
-            };
+            var labTemplate = await _labsTemplateService.GetByNumber(labNumber);
 
             PersonalData personalData = new PersonalData
             {
@@ -40,7 +37,13 @@ namespace ReportBuilder.API.Controllers
                 StudentGroup = "ПЭ-31",
             };
 
-            _pdfWriter.CreateFile(_filepath + $"/{filename}.pdf", _fontpath, labTemplate, personalData);
+            _pdfWriter.CreateFile(new PdfFileInfo
+            {
+                FilePath = _filepath + $"/{filename}.pdf",
+                FontPath = _fontpath,
+                LabsTemplate = labTemplate,
+                PersonalData = personalData
+            }, _mapper);
 
             return Ok();
         }

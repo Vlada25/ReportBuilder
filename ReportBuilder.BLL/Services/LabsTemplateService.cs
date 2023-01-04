@@ -53,6 +53,18 @@ namespace ReportBuilder.BLL.Services
             return _mapper.Map<LabsTemplateDto>(entity);
         }
 
+        public async Task<LabsTemplateDto> GetByNumber(int number)
+        {
+            var entity = await _repositoryManager.LabsTemplateRepository.GetByNumber(number);
+
+            if (entity == null)
+            {
+                throw new NullReferenceException("Entity is not found");
+            }
+
+            return _mapper.Map<LabsTemplateDto>(entity);
+        }
+
         public async Task Update(LabsTemplateForUpdateDto entityForUpdate)
         {
             var entity = await _repositoryManager.LabsTemplateRepository.GetById(entityForUpdate.Id, true);

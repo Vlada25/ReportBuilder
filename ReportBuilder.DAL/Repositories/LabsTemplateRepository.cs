@@ -42,6 +42,11 @@ namespace ReportBuilder.DAL.Repositories
             return await list.FirstOrDefaultAsync();
         }
 
+        public async Task<LabsTemplate> GetByNumber(int number)
+        {
+            return await _dbContext.LabsTemplates.FirstAsync(x => x.Number == number);
+        }
+
         public async Task Update(LabsTemplate entity)
         {
             _dbContext.Update(entity);

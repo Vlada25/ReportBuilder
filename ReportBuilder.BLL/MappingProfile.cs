@@ -17,7 +17,7 @@ namespace ReportBuilder.BLL
     {
         public MappingProfile()
         {
-            CreateMap<LabsTemplate, LabsTemplateDto>();
+            CreateMap<LabsTemplate, LabsTemplateDto>().ReverseMap();
             CreateMap<LabsTemplateForCreationDto, LabsTemplate>();
             CreateMap<LabsTemplateForUpdateDto, LabsTemplate>();
 

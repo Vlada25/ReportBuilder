@@ -1,5 +1,7 @@
-﻿using iTextSharp.text;
+﻿using AutoMapper;
+using iTextSharp.text;
 using iTextSharp.text.pdf;
+using ReportBuilder.BLL.DTO.LabsTemplate;
 using ReportBuilder.DAL;
 using ReportBuilder.DAL.Models;
 using System.Text;
@@ -8,7 +10,7 @@ namespace ReportBuilder.BLL
 {
     public class LabPdfWriter
     {
-        public void CreateFile(string filepath, string fontpath, LabsTemplate template, PersonalData personalData)
+        public void CreateFile(string filepath, string fontpath, LabsTemplateDto template, PersonalData personalData, IMapper mapper)
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
@@ -20,7 +22,7 @@ namespace ReportBuilder.BLL
             Font timesRegular = new Font(bf, 14);
             Font timesBold = new Font(bf, 14, 1);
 
-            Paragraph titleTop = new Paragraph(CommonData.GenerateTitleTopText(template), timesRegular);
+            Paragraph titleTop = new Paragraph(CommonData.GenerateTitleTopText(mapper.Map<LabsTemplate>(template)), timesRegular);
             titleTop.Alignment = Element.ALIGN_CENTER;
 
             Paragraph titleRight = new Paragraph(CommonData.GenerateTitleRightText(personalData), timesRegular);
