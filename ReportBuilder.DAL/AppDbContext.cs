@@ -1,10 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ReportBuilder.DAL.Configuration;
 using ReportBuilder.DAL.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ReportBuilder.DAL
 {
@@ -20,7 +16,7 @@ namespace ReportBuilder.DAL
         {
             base.OnModelCreating(modelBuilder);
 
-            //modelBuilder.ApplyConfiguration(new FaultsConfig());
+            modelBuilder.ApplyConfiguration(new LabsTemplateConfig());
         }
     }
 }

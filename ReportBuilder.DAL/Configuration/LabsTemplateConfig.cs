@@ -1,10 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ReportBuilder.DAL.Models;
 
 namespace ReportBuilder.DAL.Configuration
@@ -17,6 +12,7 @@ namespace ReportBuilder.DAL.Configuration
             {
                 new LabsTemplate
                 {
+                    Id = new Guid("593a046b-d4f9-4110-a851-3e81a2871f7a"),
                     Number = 1,
                     Theme = "Статические характеристики датчиков тока и напряжения",
                     Purpose = "\n               1. Изучить принцип работы датчиков тока и напряжения\n" +
@@ -28,6 +24,7 @@ namespace ReportBuilder.DAL.Configuration
                 },
                 new LabsTemplate
                 {
+                    Id = new Guid("3cfe4386-2c91-457e-a93b-ac90d7f4af4c"),
                     Number = 3,
                     Theme = "Статические характеристики тахогенератора и энкодера",
                     Purpose = " изучить принцип работы тахогенератора и энкодера. Исследовать характеристики тахогенератора и энкодера.",
@@ -35,6 +32,7 @@ namespace ReportBuilder.DAL.Configuration
                 },
                 new LabsTemplate
                 {
+                    Id = new Guid("5dc7ad45-59c5-4127-b209-97fc930bc3a2"),
                     Number = 4,
                     Theme = "Статические характеристики датчиков линейного перемещения",
                     Purpose = " изучить принцип работы датчиков линейного перемещения. Исследовать характеристики датчиков линейного перемещения.",
@@ -42,6 +40,7 @@ namespace ReportBuilder.DAL.Configuration
                 },
                 new LabsTemplate
                 {
+                    Id = new Guid("202b2d34-b93e-45db-935b-3a1d050f36bb"),
                     Number = 5,
                     Theme = "Изучение принципа работы бесконтактных датчиков выключателей",
                     Purpose = " изучить устройство и принцип работы бесконтактных датчиков-выключателей.",
@@ -49,6 +48,7 @@ namespace ReportBuilder.DAL.Configuration
                 },
                 new LabsTemplate
                 {
+                    Id = new Guid("3c23fb4d-4efb-42e0-b9ba-86486e27f3fa"),
                     Number = 6,
                     Theme = "Статические характеристики датчиков углового положения",
                     Purpose = "\n               1. Исследование потенциометра\n" +
@@ -58,6 +58,7 @@ namespace ReportBuilder.DAL.Configuration
                 },
                 new LabsTemplate
                 {
+                    Id = new Guid("8133fde9-ab3a-4e8d-b819-4d543cdfa485"),
                     Number = 7,
                     Theme = "Статическая характеристика датчика давления",
                     Purpose = "\n               1. Изучить устройство и принцип работы датчика давления.\n" +

@@ -1,48 +1,48 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ReportBuilder.DAL.Interfaces;
-using ReportBuilder.DAL.Models;
+using ReportBuilder.DAL.Models.ReportElements;
 
 namespace ReportBuilder.DAL.Repositories
 {
-    public class LabsTemplateRepository : ILabsTemplateRepository
+    public class TableElementRepository : ITableElementRepository
     {
         private readonly AppDbContext _dbContext;
-        public LabsTemplateRepository(AppDbContext dbContext)
+        public TableElementRepository(AppDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public async Task Create(LabsTemplate entity)
+        public async Task Create(TableElement entity)
         {
             await _dbContext.AddAsync(entity);
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task Delete(LabsTemplate entity)
+        public async Task Delete(TableElement entity)
         {
             _dbContext.Remove(entity);
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<LabsTemplate>> GetAll(bool trackChanges)
+        public async Task<IEnumerable<TableElement>> GetAll(bool trackChanges)
         {
             var list = !trackChanges
-                ? _dbContext.Set<LabsTemplate>().AsNoTracking()
-                : _dbContext.Set<LabsTemplate>();
+                ? _dbContext.Set<TableElement>().AsNoTracking()
+                : _dbContext.Set<TableElement>();
 
             return await list.ToListAsync();
         }
 
-        public async Task<LabsTemplate> GetById(Guid id, bool trackChanges)
+        public async Task<TableElement> GetById(Guid id, bool trackChanges)
         {
             var list = !trackChanges
-                ? _dbContext.Set<LabsTemplate>().Where(x => x.Id.Equals(id)).AsNoTracking()
-                : _dbContext.Set<LabsTemplate>().Where(x => x.Id.Equals(id));
+                ? _dbContext.Set<TableElement>().Where(x => x.Id.Equals(id)).AsNoTracking()
+                : _dbContext.Set<TableElement>().Where(x => x.Id.Equals(id));
 
             return await list.FirstOrDefaultAsync();
         }
 
-        public async Task Update(LabsTemplate entity)
+        public async Task Update(TableElement entity)
         {
             _dbContext.Update(entity);
             await _dbContext.SaveChangesAsync();

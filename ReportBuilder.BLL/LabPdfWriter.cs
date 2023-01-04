@@ -1,11 +1,8 @@
-﻿using ReportBuilder.DAL.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using iTextSharp.text;
+﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
 using ReportBuilder.DAL;
+using ReportBuilder.DAL.Models;
+using System.Text;
 
 namespace ReportBuilder.BLL
 {
@@ -32,18 +29,25 @@ namespace ReportBuilder.BLL
             Paragraph titleBottom = new Paragraph($"Гомель {DateTime.UtcNow.Year}", timesRegular);
             titleBottom.Alignment = Element.ALIGN_CENTER;
 
+
             Paragraph purpose = new Paragraph();
-            Phrase purposePhrase = new Phrase();
-            purposePhrase.Add(new Chunk($"               Цель работы:", timesBold));
-            purposePhrase.Add(new Chunk(template.Purpose, timesRegular));
+            Phrase purposePhrase = new Phrase
+            {
+                new Chunk($"               Цель работы:", timesBold),
+                new Chunk(template.Purpose, timesRegular)
+            };
             purpose.Add(purposePhrase);
 
+
             Paragraph conclusion = new Paragraph();
-            Phrase conclusionPhrase = new Phrase();
-            conclusionPhrase.Add(new Chunk($"               Вывод: ", timesBold));
-            conclusionPhrase.Add(new Chunk(template.Conclusion, timesRegular));
+            Phrase conclusionPhrase = new Phrase
+            {
+                new Chunk($"\n               Вывод: ", timesBold),
+                new Chunk(template.Conclusion, timesRegular)
+            };
             conclusion.Add(conclusionPhrase);
             conclusion.Alignment = Element.ALIGN_JUSTIFIED;
+
 
             Paragraph workProcessTitle = new Paragraph("\nХод работы", timesBold);
             workProcessTitle.Alignment = Element.ALIGN_CENTER;

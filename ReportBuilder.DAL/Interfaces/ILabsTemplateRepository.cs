@@ -1,9 +1,4 @@
 ﻿using ReportBuilder.DAL.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ReportBuilder.DAL.Interfaces
 {
@@ -12,7 +7,7 @@ namespace ReportBuilder.DAL.Interfaces
         Task<IEnumerable<LabsTemplate>> GetAll(bool trackChanges);
         Task<LabsTemplate> GetById(Guid id, bool trackChanges);
         Task Create(LabsTemplate entity);
-        void Delete(LabsTemplate entity);
-        void Update(LabsTemplate entity);
+        Task Delete(LabsTemplate entity);
+        Task Update(LabsTemplate entity);
     }
 }

@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using ReportBuilder.BLL;
-using ReportBuilder.DAL.Models;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace ReportBuilder.API.Controllers
 {
@@ -9,6 +6,6 @@ namespace ReportBuilder.API.Controllers
     [ApiController]
     public class LabsTemplateController : ControllerBase
     {
-        
+
     }
 }
