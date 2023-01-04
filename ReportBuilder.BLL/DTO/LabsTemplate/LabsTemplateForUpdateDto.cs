@@ -8,6 +8,7 @@ namespace ReportBuilder.BLL.DTO.LabsTemplate
 {
     public class LabsTemplateForUpdateDto
     {
+        public Guid Id { get; set; }
         public int Number { get; set; }
         public string Theme { get; set; }
         public string Purpose { get; set; }

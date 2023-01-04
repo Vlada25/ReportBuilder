@@ -9,6 +9,7 @@ namespace ReportBuilder.BLL.DTO.PictureElement
 {
     public class PictureElementForUpdateDto
     {
+        public Guid Id { get; set; }
         public Guid LabTemplateId { get; set; }
         public int Number { get; set; }
         public ReportElementType ElementType { get; set; }

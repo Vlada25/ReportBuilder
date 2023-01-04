@@ -6,10 +6,9 @@ namespace ReportBuilder.BLL.Interfaces
     public interface ILabsTemplateService
     {
         Task<IEnumerable<LabsTemplateDto>> GetAll();
-        Task<IEnumerable<LabsTemplateDto>> Get(int rowsCount, string cacheKey);
         Task<LabsTemplateDto> GetById(Guid id);
-        Task<LabsTemplateDto> Create(LabsTemplateForCreationDto entityForCreation);
-        Task<bool> Delete(Guid id);
-        Task<bool> Update(LabsTemplateForUpdateDto entityForUpdate);
+        Task<Guid> Create(LabsTemplateForCreationDto entityForCreation);
+        Task Delete(Guid id);
+        Task Update(LabsTemplateForUpdateDto entityForUpdate);
     }
 }
