@@ -1,5 +1,4 @@
 ﻿using ReportBuilder.BLL.DTO.LabsTemplate;
-using ReportBuilder.DAL.Models;
 
 namespace ReportBuilder.BLL.Interfaces
 {

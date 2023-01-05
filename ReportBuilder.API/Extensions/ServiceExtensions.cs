@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
-using ReportBuilder.DAL.Interfaces;
-using ReportBuilder.DAL;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using ReportBuilder.BLL;
 using ReportBuilder.BLL.Interfaces;
 using ReportBuilder.BLL.Services;
-using ReportBuilder.BLL;
+using ReportBuilder.DAL;
+using ReportBuilder.DAL.Interfaces;
 
 namespace ReportBuilder.API.Extensions
 {

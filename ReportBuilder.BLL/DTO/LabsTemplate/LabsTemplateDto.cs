@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ReportBuilder.BLL.DTO.LabsTemplate
+﻿namespace ReportBuilder.BLL.DTO.LabsTemplate
 {
     public class LabsTemplateDto
     {

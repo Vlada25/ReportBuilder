@@ -11,12 +11,16 @@ namespace ReportBuilder.DAL
 
 
         public DbSet<LabsTemplate> LabsTemplates { get; set; }
+        public DbSet<ReportElement> ReportElements { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyConfiguration(new LabsTemplateConfig());
+            modelBuilder.ApplyConfiguration(new ParagraphElementConfig());
+            modelBuilder.ApplyConfiguration(new PictureElementConfig());
+            modelBuilder.ApplyConfiguration(new TableElementConfig());
         }
     }
 }

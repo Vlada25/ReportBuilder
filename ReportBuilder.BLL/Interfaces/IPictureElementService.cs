@@ -1,10 +1,4 @@
-﻿using ReportBuilder.BLL.DTO.ParagraphElement;
-using ReportBuilder.BLL.DTO.PictureElement;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ReportBuilder.BLL.DTO.PictureElement;
 
 namespace ReportBuilder.BLL.Interfaces
 {
@@ -12,6 +6,7 @@ namespace ReportBuilder.BLL.Interfaces
     {
         Task<IEnumerable<PictureElementDto>> GetAll();
         Task<PictureElementDto> GetById(Guid id);
+        Task<IEnumerable<PictureElementDto>> GetByLabsTemplateId(Guid labsTemplateId);
         Task<Guid> Create(PictureElementForCreationDto entityForCreation);
         Task Delete(Guid id);
         Task Update(PictureElementForUpdateDto entityForUpdate);

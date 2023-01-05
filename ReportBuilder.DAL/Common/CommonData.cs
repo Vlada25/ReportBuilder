@@ -1,6 +1,6 @@
 ﻿using ReportBuilder.DAL.Models;
 
-namespace ReportBuilder.DAL
+namespace ReportBuilder.DAL.Common
 {
     public class CommonData
     {

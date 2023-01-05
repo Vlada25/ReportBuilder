@@ -5,11 +5,6 @@ using ReportBuilder.BLL.DTO.PictureElement;
 using ReportBuilder.BLL.DTO.TableElement;
 using ReportBuilder.DAL.Models;
 using ReportBuilder.DAL.Models.ReportElements;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ReportBuilder.BLL
 {
@@ -21,15 +16,15 @@ namespace ReportBuilder.BLL
             CreateMap<LabsTemplateForCreationDto, LabsTemplate>();
             CreateMap<LabsTemplateForUpdateDto, LabsTemplate>();
 
-            CreateMap<ParagraphElement, ParagraphElementDto>();
+            CreateMap<ParagraphElement, ParagraphElementDto>().ReverseMap();
             CreateMap<ParagraphElementForCreationDto, ParagraphElement>();
             CreateMap<ParagraphElementForUpdateDto, ParagraphElement>();
 
-            CreateMap<PictureElement, PictureElementDto>();
-            CreateMap<PictureElementForCreationDto, PictureElement>();
+            CreateMap<PictureElement, PictureElementDto>().ReverseMap();
+            CreateMap<PictureElementForCreationDto, PictureElement>().ReverseMap();
             CreateMap<PictureElementForUpdateDto, PictureElement>();
 
-            CreateMap<TableElement, TableElementDto>();
+            CreateMap<TableElement, TableElementDto>().ReverseMap();
             CreateMap<TableElementForCreationDto, TableElement>();
             CreateMap<TableElementForUpdateDto, TableElement>();
         }

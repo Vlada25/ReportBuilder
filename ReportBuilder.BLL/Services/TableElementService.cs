@@ -2,13 +2,7 @@
 using ReportBuilder.BLL.DTO.TableElement;
 using ReportBuilder.BLL.Interfaces;
 using ReportBuilder.DAL.Interfaces;
-using ReportBuilder.DAL.Models;
 using ReportBuilder.DAL.Models.ReportElements;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ReportBuilder.BLL.Services
 {
@@ -58,6 +52,9 @@ namespace ReportBuilder.BLL.Services
 
             return _mapper.Map<TableElementDto>(entity);
         }
+
+        public async Task<IEnumerable<TableElementDto>> GetByLabsTemplateId(Guid labsTemplateId) =>
+            _mapper.Map<IEnumerable<TableElementDto>>(await _repositoryManager.TableElementRepository.GetByLabsTemplateId(labsTemplateId, false));
 
         public async Task Update(TableElementForUpdateDto entityForUpdate)
         {

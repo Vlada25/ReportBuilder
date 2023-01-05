@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
-using ReportBuilder.BLL.DTO.LabsTemplate;
-using ReportBuilder.DAL;
+using ReportBuilder.BLL.Domain;
+using ReportBuilder.DAL.Common;
+using ReportBuilder.DAL.Enums;
 using ReportBuilder.DAL.Models;
 using System.Text;
 
@@ -10,22 +11,23 @@ namespace ReportBuilder.BLL
 {
     public class LabPdfWriter
     {
-        public void CreateFile(string filepath, string fontpath, LabsTemplateDto template, PersonalData personalData, IMapper mapper)
+        public void CreateFile(PdfFileInfo fileInfo, IMapper mapper)
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
             Document document = new Document(PageSize.A4);
 
-            PdfWriter.GetInstance(document, new FileStream(filepath, FileMode.Create));
 
-            BaseFont bf = BaseFont.CreateFont(fontpath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+            PdfWriter.GetInstance(document, new FileStream(fileInfo.FilePath, FileMode.Create));
+
+            BaseFont bf = BaseFont.CreateFont(fileInfo.FontPath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
             Font timesRegular = new Font(bf, 14);
             Font timesBold = new Font(bf, 14, 1);
 
-            Paragraph titleTop = new Paragraph(CommonData.GenerateTitleTopText(mapper.Map<LabsTemplate>(template)), timesRegular);
+            Paragraph titleTop = new Paragraph(CommonData.GenerateTitleTopText(mapper.Map<LabsTemplate>(fileInfo.LabsTemplate)), timesRegular);
             titleTop.Alignment = Element.ALIGN_CENTER;
 
-            Paragraph titleRight = new Paragraph(CommonData.GenerateTitleRightText(personalData), timesRegular);
+            Paragraph titleRight = new Paragraph(CommonData.GenerateTitleRightText(fileInfo.PersonalData), timesRegular);
             titleRight.Alignment = Element.ALIGN_RIGHT;
 
             Paragraph titleBottom = new Paragraph($"Гомель {DateTime.UtcNow.Year}", timesRegular);
@@ -35,17 +37,17 @@ namespace ReportBuilder.BLL
             Paragraph purpose = new Paragraph();
             Phrase purposePhrase = new Phrase
             {
-                new Chunk($"               Цель работы:", timesBold),
-                new Chunk(template.Purpose, timesRegular)
+                new Chunk($"{Constants.Tab}Цель работы:", timesBold),
+                new Chunk(fileInfo.LabsTemplate.Purpose, timesRegular)
             };
             purpose.Add(purposePhrase);
 
 
-            Paragraph conclusion = new Paragraph();
+            Paragraph conclusion = new Paragraph("\n");
             Phrase conclusionPhrase = new Phrase
             {
-                new Chunk($"\n               Вывод: ", timesBold),
-                new Chunk(template.Conclusion, timesRegular)
+                new Chunk($"{Constants.Tab}Вывод: ", timesBold),
+                new Chunk(fileInfo.LabsTemplate.Conclusion, timesRegular),
             };
             conclusion.Add(conclusionPhrase);
             conclusion.Alignment = Element.ALIGN_JUSTIFIED;
@@ -54,6 +56,7 @@ namespace ReportBuilder.BLL
             Paragraph workProcessTitle = new Paragraph("\nХод работы", timesBold);
             workProcessTitle.Alignment = Element.ALIGN_CENTER;
 
+
             document.Open();
 
             document.Add(titleTop);
@@ -61,6 +64,58 @@ namespace ReportBuilder.BLL
             document.Add(titleBottom);
             document.Add(purpose);
             document.Add(workProcessTitle);
+
+            foreach (var item in fileInfo.ReportElements)
+            {
+                if (item.ElementType.Equals(ReportElementType.Paragraph))
+                {
+                    Paragraph paragraph = new Paragraph(item.Text, timesRegular);
+                    document.Add(paragraph);
+                }
+                else if (item.ElementType.Equals(ReportElementType.Table))
+                {
+                    var tableItem = fileInfo.TableElements.FirstOrDefault(x => x.Id.Equals(item.Id));
+
+                    PdfPTable table = new PdfPTable(tableItem.ColumnsCount);
+
+                    if (tableItem.HorizontalTitles is null)
+                    {
+                        var titles = tableItem.VerticalTitles.Split(';');
+                        for (int i = 0; i < tableItem.RowsCount; i++)
+                        {
+                            table.AddCell(new Phrase(titles[i], timesRegular));
+                            for (int j = 1; j < tableItem.ColumnsCount; j++)
+                            {
+                                table.AddCell(new Phrase(" ", timesRegular));
+                            }
+                        }
+                    }
+                    else
+                    {
+
+                    }
+
+                    Paragraph paragraph = new Paragraph("\n");
+                    Phrase phrase = new Phrase
+                    {
+                        new Chunk($"{Constants.Tab}Таблица {tableItem.Number} - {tableItem.Text}", timesRegular),
+                        table
+                    };
+                    paragraph.Add(phrase);
+
+                    document.Add(paragraph);
+                }
+                else
+                {
+                    var pictureItem = fileInfo.PictureElements.FirstOrDefault(x => x.Id.Equals(item.Id));
+
+                    Paragraph paragraph = new Paragraph($"\nРисунок {pictureItem.Number} - {pictureItem.Text}", timesRegular);
+                    paragraph.Alignment = Element.ALIGN_CENTER;
+
+                    document.Add(paragraph);
+                }
+            }
+
             document.Add(conclusion);
 
             document.Close();

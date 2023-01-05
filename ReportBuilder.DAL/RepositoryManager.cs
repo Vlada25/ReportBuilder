@@ -1,11 +1,5 @@
-﻿using Microsoft.Extensions.Caching.Memory;
-using ReportBuilder.DAL.Interfaces;
+﻿using ReportBuilder.DAL.Interfaces;
 using ReportBuilder.DAL.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ReportBuilder.DAL
 {

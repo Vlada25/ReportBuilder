@@ -11,8 +11,8 @@ namespace ReportBuilder.BLL.Services
         private readonly IRepositoryManager _repositoryManager;
         private readonly IMapper _mapper;
 
-        public LabsTemplateService(IRepositoryManager repositoryManager, IMapper mapper) 
-        { 
+        public LabsTemplateService(IRepositoryManager repositoryManager, IMapper mapper)
+        {
             _repositoryManager = repositoryManager;
             _mapper = mapper;
         }

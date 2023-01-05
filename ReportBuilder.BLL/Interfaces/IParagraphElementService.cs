@@ -1,10 +1,4 @@
-﻿using ReportBuilder.BLL.DTO.LabsTemplate;
-using ReportBuilder.BLL.DTO.ParagraphElement;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ReportBuilder.BLL.DTO.ParagraphElement;
 
 namespace ReportBuilder.BLL.Interfaces
 {
@@ -12,6 +6,7 @@ namespace ReportBuilder.BLL.Interfaces
     {
         Task<IEnumerable<ParagraphElementDto>> GetAll();
         Task<ParagraphElementDto> GetById(Guid id);
+        Task<IEnumerable<ParagraphElementDto>> GetByLabsTemplateId(Guid labsTemplateId);
         Task<Guid> Create(ParagraphElementForCreationDto entityForCreation);
         Task Delete(Guid id);
         Task Update(ParagraphElementForUpdateDto entityForUpdate);

@@ -42,6 +42,15 @@ namespace ReportBuilder.DAL.Repositories
             return await list.FirstOrDefaultAsync();
         }
 
+        public async Task<IEnumerable<ParagraphElement>> GetByLabsTemplateId(Guid labsTemplateId, bool trackChanges)
+        {
+            var list = !trackChanges
+                ? _dbContext.Set<ParagraphElement>().Where(x => x.LabTemplateId.Equals(labsTemplateId)).AsNoTracking()
+                : _dbContext.Set<ParagraphElement>().Where(x => x.LabTemplateId.Equals(labsTemplateId));
+
+            return await list.ToListAsync();
+        }
+
         public async Task Update(ParagraphElement entity)
         {
             _dbContext.Update(entity);

@@ -6,6 +6,7 @@ namespace ReportBuilder.DAL.Interfaces
     {
         Task<IEnumerable<ParagraphElement>> GetAll(bool trackChanges);
         Task<ParagraphElement> GetById(Guid id, bool trackChanges);
+        Task<IEnumerable<ParagraphElement>> GetByLabsTemplateId(Guid labsTemplateId, bool trackChanges);
         Task Create(ParagraphElement entity);
         Task Delete(ParagraphElement entity);
         Task Update(ParagraphElement entity);
