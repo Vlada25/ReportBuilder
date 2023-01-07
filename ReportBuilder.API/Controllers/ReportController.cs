@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ReportBuilder.BLL;
 using ReportBuilder.BLL.Comparers;
@@ -11,7 +12,7 @@ namespace ReportBuilder.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ReportsController : ControllerBase
+    public class ReportController : ControllerBase
     {
         private readonly string _filepath = @"..\reports";
         private readonly string _fontpath = @"..\fonts\TimesNewRomanRegular.ttf";
@@ -23,7 +24,7 @@ namespace ReportBuilder.API.Controllers
         private readonly ITableElementService _tableElementService;
         private readonly IMapper _mapper;
 
-        public ReportsController(LabPdfWriter pdfWriter,
+        public ReportController(LabPdfWriter pdfWriter,
             ILabsTemplateService labsTemplateService,
             IParagraphElementService paragraphElementService,
             IPictureElementService pictureElementService,
@@ -39,6 +40,7 @@ namespace ReportBuilder.API.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> CreateDocument(string filename, int labNumber)
         {
             var labsTemplate = await _labsTemplateService.GetByNumber(labNumber);
@@ -72,13 +74,6 @@ namespace ReportBuilder.API.Controllers
             }, _mapper);
 
             return Ok();
-        }
-
-        [HttpDelete]
-        public IActionResult DeleteDocument(string filename)
-        {
-
-            return NoContent();
         }
     }
 }

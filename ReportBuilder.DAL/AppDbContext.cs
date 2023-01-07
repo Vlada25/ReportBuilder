@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using ReportBuilder.DAL.Configuration;
 using ReportBuilder.DAL.Models;
 
 namespace ReportBuilder.DAL
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<User>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options) { }
@@ -21,6 +22,7 @@ namespace ReportBuilder.DAL
             modelBuilder.ApplyConfiguration(new ParagraphElementConfig());
             modelBuilder.ApplyConfiguration(new PictureElementConfig());
             modelBuilder.ApplyConfiguration(new TableElementConfig());
+            modelBuilder.ApplyConfiguration(new RoleConfig());
         }
     }
 }

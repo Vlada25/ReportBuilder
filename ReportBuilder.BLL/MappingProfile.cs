@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ReportBuilder.BLL.Domain;
 using ReportBuilder.BLL.DTO.LabsTemplate;
 using ReportBuilder.BLL.DTO.ParagraphElement;
 using ReportBuilder.BLL.DTO.PictureElement;
@@ -27,6 +28,8 @@ namespace ReportBuilder.BLL
             CreateMap<TableElement, TableElementDto>().ReverseMap();
             CreateMap<TableElementForCreationDto, TableElement>();
             CreateMap<TableElementForUpdateDto, TableElement>();
+
+            CreateMap<RegisterUser, User>();
         }
     }
 }
