@@ -1,14 +1,11 @@
-﻿using ReportBuilder.DAL.Enums;
+﻿using Microsoft.AspNetCore.Http;
+using ReportBuilder.BLL.DTO.ReportElement;
 
 namespace ReportBuilder.BLL.DTO.PictureElement
 {
-    public class PictureElementDto
+    public class PictureElementDto : ReportElementDto
     {
-        public Guid Id { get; set; }
-        public Guid LabTemplateId { get; set; }
-        public int Number { get; set; }
-        public ReportElementType ElementType { get; set; }
-        public string Text { get; set; }
         public int PictureNumber { get; set; }
+        public string FileName { get; set; }
     }
 }

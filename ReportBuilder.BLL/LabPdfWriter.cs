@@ -17,7 +17,6 @@ namespace ReportBuilder.BLL
 
             Document document = new Document(PageSize.A4);
 
-
             PdfWriter.GetInstance(document, new FileStream(fileInfo.FilePath, FileMode.Create));
 
             BaseFont bf = BaseFont.CreateFont(fileInfo.FontPath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
@@ -112,6 +111,20 @@ namespace ReportBuilder.BLL
                     Paragraph paragraph = new Paragraph($"\nРисунок {pictureItem.Number} - {pictureItem.Text}", timesRegular);
                     paragraph.Alignment = Element.ALIGN_CENTER;
 
+                    document.Add(new Paragraph("\n"));
+
+                    if (pictureItem.FileName is not null)
+                    {
+                        var picture = Image.GetInstance(new FileStream($"{fileInfo.PicturesPath}\\{pictureItem.FileName}", FileMode.Open));
+
+                        var koef = picture.Height / picture.Width;
+                        picture.ScaleAbsolute(400f, 400f * koef);
+
+                        picture.Alignment = Element.ALIGN_CENTER;
+
+                        document.Add(picture);
+                    }
+                    
                     document.Add(paragraph);
                 }
             }

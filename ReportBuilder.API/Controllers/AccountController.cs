@@ -7,7 +7,7 @@ using ReportBuilder.DAL.Models;
 
 namespace ReportBuilder.API.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    [Route("api/account")]
     [ApiController]
     public class AccountController : ControllerBase
     {
@@ -27,7 +27,7 @@ namespace ReportBuilder.API.Controllers
             _mapper = mapper;
         }
 
-        [HttpPost]
+        [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginUser loginUser)
         {
             if (loginUser == null)
@@ -43,7 +43,7 @@ namespace ReportBuilder.API.Controllers
             return Ok(new { Token = await _authService.CreateToken() });
         }
 
-        [HttpPost]
+        [HttpPost("registration")]
         public async Task<IActionResult> Register([FromBody] RegisterUser registerUser)
         {
             var user = _mapper.Map<User>(registerUser);
@@ -71,7 +71,7 @@ namespace ReportBuilder.API.Controllers
 
             await _userManager.AddToRolesAsync(user, registerUser.Roles);
 
-            return Ok("Registration completed successfully!");
+            return Ok();
         }
     }
 }

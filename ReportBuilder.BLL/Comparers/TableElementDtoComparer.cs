@@ -1,10 +1,10 @@
-﻿using ReportBuilder.DAL.Models;
+﻿using ReportBuilder.BLL.DTO.TableElement;
 
 namespace ReportBuilder.BLL.Comparers
 {
-    public class ReportElementComparer : IComparer<ReportElement> 
+    public class TableElementDtoComparer : IComparer<TableElementDto>
     {
-        public int Compare(ReportElement? x, ReportElement? y)
+        public int Compare(TableElementDto x, TableElementDto y)
         {
             if (x.Number > y.Number)
                 return 1;

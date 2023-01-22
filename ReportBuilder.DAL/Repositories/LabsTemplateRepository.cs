@@ -27,8 +27,8 @@ namespace ReportBuilder.DAL.Repositories
         public async Task<IEnumerable<LabsTemplate>> GetAll(bool trackChanges)
         {
             var list = !trackChanges
-                ? _dbContext.Set<LabsTemplate>().AsNoTracking()
-                : _dbContext.Set<LabsTemplate>();
+                ? _dbContext.Set<LabsTemplate>().OrderBy(_ => _.Number).AsNoTracking()
+                : _dbContext.Set<LabsTemplate>().OrderBy(_ => _.Number);
 
             return await list.ToListAsync();
         }

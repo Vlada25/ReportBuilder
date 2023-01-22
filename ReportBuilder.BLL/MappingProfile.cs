@@ -4,6 +4,7 @@ using ReportBuilder.BLL.DTO.LabsTemplate;
 using ReportBuilder.BLL.DTO.ParagraphElement;
 using ReportBuilder.BLL.DTO.PictureElement;
 using ReportBuilder.BLL.DTO.TableElement;
+using ReportBuilder.BLL.DTO.User;
 using ReportBuilder.DAL.Models;
 using ReportBuilder.DAL.Models.ReportElements;
 
@@ -30,6 +31,7 @@ namespace ReportBuilder.BLL
             CreateMap<TableElementForUpdateDto, TableElement>();
 
             CreateMap<RegisterUser, User>();
+            CreateMap<User, UserDto>();
         }
     }
 }
