@@ -103,6 +103,11 @@ namespace ReportBuilder.API.Controllers
                 pictures.FirstOrDefault(_ => _.PictureNumber == item.PictureNumber).FileName = item.FileName;
             }
 
+            foreach (var item in reportRequest.TableElements)
+            {
+                tables.FirstOrDefault(_ => _.TableNumber == item.TableNumber).Values = item.Values;
+            }
+
             List<ReportElement> reportElements = new List<ReportElement>();
             reportElements.AddRange(_mapper.Map<IEnumerable<ParagraphElement>>(paragraphs));
             reportElements.AddRange(_mapper.Map<IEnumerable<PictureElement>>(pictures));

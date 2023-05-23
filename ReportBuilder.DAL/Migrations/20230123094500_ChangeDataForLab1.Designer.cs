@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ReportBuilder.DAL;
 
@@ -11,9 +12,10 @@ using ReportBuilder.DAL;
 namespace ReportBuilder.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230123094500_ChangeDataForLab1")]
+    partial class ChangeDataForLab1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,8 +53,8 @@ namespace ReportBuilder.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "6f6d24e8-098a-498f-8a91-cb058a3c353b",
-                            ConcurrencyStamp = "897583ea-6382-4890-996e-092a19523e65",
+                            Id = "60bb650d-391a-47cc-a9cd-e6452976898f",
+                            ConcurrencyStamp = "58784572-464d-4d69-96d8-423cea3b3ee7",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -356,7 +358,7 @@ namespace ReportBuilder.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a50ab1ad-c414-43a7-a268-fb5dc3fd0203"),
+                            Id = new Guid("c6e61783-53da-4a8b-a463-4160368d0270"),
                             ElementType = 0,
                             LabTemplateId = new Guid("593a046b-d4f9-4110-a851-3e81a2871f7a"),
                             Number = 0,
@@ -364,7 +366,7 @@ namespace ReportBuilder.DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("318ecc95-e2b3-44b6-bc06-5315166e036b"),
+                            Id = new Guid("213b95c9-9c4e-4cc4-a822-32e3c0757e60"),
                             ElementType = 0,
                             LabTemplateId = new Guid("593a046b-d4f9-4110-a851-3e81a2871f7a"),
                             Number = 3,
@@ -372,7 +374,7 @@ namespace ReportBuilder.DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9dc9e86d-dd64-4756-ac05-53ec6b9ff2ca"),
+                            Id = new Guid("b08dfa52-02ab-4356-919b-5a34c26f0954"),
                             ElementType = 0,
                             LabTemplateId = new Guid("593a046b-d4f9-4110-a851-3e81a2871f7a"),
                             Number = 5,
@@ -380,7 +382,7 @@ namespace ReportBuilder.DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("fc846cf7-1200-4066-aa97-eb342274ea21"),
+                            Id = new Guid("a90009db-809c-4d67-a15c-80b5865aae48"),
                             ElementType = 0,
                             LabTemplateId = new Guid("593a046b-d4f9-4110-a851-3e81a2871f7a"),
                             Number = 8,
@@ -388,7 +390,7 @@ namespace ReportBuilder.DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("073b4b06-fc5a-43b9-803a-3d0ee30a5774"),
+                            Id = new Guid("efb4b48e-19b9-4810-a164-56872b734f14"),
                             ElementType = 0,
                             LabTemplateId = new Guid("593a046b-d4f9-4110-a851-3e81a2871f7a"),
                             Number = 10,
@@ -396,7 +398,7 @@ namespace ReportBuilder.DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("2208d70f-9af6-4a55-8a1f-71fe340c09fb"),
+                            Id = new Guid("075c375f-7a09-48e4-ba50-4da0a665ecd9"),
                             ElementType = 0,
                             LabTemplateId = new Guid("593a046b-d4f9-4110-a851-3e81a2871f7a"),
                             Number = 13,
@@ -404,7 +406,7 @@ namespace ReportBuilder.DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("fe978b13-10fe-419d-9567-a2039a7279a2"),
+                            Id = new Guid("52587545-7936-4761-b602-28f62b41bc52"),
                             ElementType = 0,
                             LabTemplateId = new Guid("593a046b-d4f9-4110-a851-3e81a2871f7a"),
                             Number = 15,
@@ -412,7 +414,7 @@ namespace ReportBuilder.DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("55bc5467-e2ec-4ff0-983b-d0a30fd28d9a"),
+                            Id = new Guid("e558e12b-9d38-46b2-97e9-8a70ac7a0713"),
                             ElementType = 0,
                             LabTemplateId = new Guid("593a046b-d4f9-4110-a851-3e81a2871f7a"),
                             Number = 18,
@@ -420,7 +422,7 @@ namespace ReportBuilder.DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("2ff390d7-1354-4877-a3cd-66cccdd699cd"),
+                            Id = new Guid("2c31d8b0-a296-4cb2-8445-f4551ab37948"),
                             ElementType = 0,
                             LabTemplateId = new Guid("593a046b-d4f9-4110-a851-3e81a2871f7a"),
                             Number = 20,
@@ -428,35 +430,11 @@ namespace ReportBuilder.DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("3fc3b9f6-58ea-4894-86da-335cfa287b30"),
+                            Id = new Guid("8811f813-d0fa-47ae-a2b0-95121901772f"),
                             ElementType = 0,
                             LabTemplateId = new Guid("593a046b-d4f9-4110-a851-3e81a2871f7a"),
                             Number = 23,
                             Text = "\n          5.2.Строим статическую характеристику I=f(U)."
-                        },
-                        new
-                        {
-                            Id = new Guid("7d18984d-fff8-4655-aaa7-b18cf48e326f"),
-                            ElementType = 0,
-                            LabTemplateId = new Guid("3cfe4386-2c91-457e-a93b-ac90d7f4af4c"),
-                            Number = 0,
-                            Text = "          1. Подключаем стенд к однофазной сети переменного тока 220В, 50Гц.\n          2. Собираем схему источника регулируемого напряжения, как показано на рисунке 1."
-                        },
-                        new
-                        {
-                            Id = new Guid("81ea1d02-eda2-4202-981d-73fa9144549b"),
-                            ElementType = 0,
-                            LabTemplateId = new Guid("3cfe4386-2c91-457e-a93b-ac90d7f4af4c"),
-                            Number = 2,
-                            Text = "\n          3. Подключаем мультиметр к гнездам тахогенератора BR1 и двигателя M1, как показано на рисунке 2. Выставляем пределы измерения 20В и 200В постоянного напряжения соответственно."
-                        },
-                        new
-                        {
-                            Id = new Guid("ea208cfa-afec-4d25-b49d-66b6fd41652e"),
-                            ElementType = 0,
-                            LabTemplateId = new Guid("3cfe4386-2c91-457e-a93b-ac90d7f4af4c"),
-                            Number = 4,
-                            Text = "\n          4. Регистрируем значение частоты вращения n на приборе EP1 и значение выходного напряжения Uг на тахогенераторе. Полученные данные заносим в таблицу 1."
                         });
                 });
 
@@ -472,7 +450,7 @@ namespace ReportBuilder.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("7778caa2-ae71-45a7-a645-9db0797f4304"),
+                            Id = new Guid("a6ec28a2-14fa-4f4c-908e-d7515964db3b"),
                             ElementType = 1,
                             LabTemplateId = new Guid("593a046b-d4f9-4110-a851-3e81a2871f7a"),
                             Number = 1,
@@ -481,7 +459,7 @@ namespace ReportBuilder.DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("fd0e385f-9fc3-4e13-aa36-76a1a1ec629e"),
+                            Id = new Guid("8b007e14-7cf7-4775-be4a-95496b04d756"),
                             ElementType = 1,
                             LabTemplateId = new Guid("593a046b-d4f9-4110-a851-3e81a2871f7a"),
                             Number = 4,
@@ -490,7 +468,7 @@ namespace ReportBuilder.DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ef0e5361-9d28-492e-9072-5459583c8348"),
+                            Id = new Guid("72d8f395-b14c-4e0d-8cc4-a0d40bdc9010"),
                             ElementType = 1,
                             LabTemplateId = new Guid("593a046b-d4f9-4110-a851-3e81a2871f7a"),
                             Number = 6,
@@ -499,7 +477,7 @@ namespace ReportBuilder.DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9af96152-d6af-409b-be07-9adafa367c6b"),
+                            Id = new Guid("414f9b63-ec69-41c9-98a0-5e2ee3dd1ef1"),
                             ElementType = 1,
                             LabTemplateId = new Guid("593a046b-d4f9-4110-a851-3e81a2871f7a"),
                             Number = 9,
@@ -508,7 +486,7 @@ namespace ReportBuilder.DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("459cd4f6-7c5f-443a-ade0-dce4a4bff950"),
+                            Id = new Guid("37226d0e-7681-4dd4-ad05-a112feedc754"),
                             ElementType = 1,
                             LabTemplateId = new Guid("593a046b-d4f9-4110-a851-3e81a2871f7a"),
                             Number = 11,
@@ -517,7 +495,7 @@ namespace ReportBuilder.DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("0956ed11-1b0d-4f47-a591-0cab180e70e4"),
+                            Id = new Guid("7a0eab93-25c1-49a3-b1c7-72daa2afb8bc"),
                             ElementType = 1,
                             LabTemplateId = new Guid("593a046b-d4f9-4110-a851-3e81a2871f7a"),
                             Number = 14,
@@ -526,7 +504,7 @@ namespace ReportBuilder.DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a74c715a-fdd1-40fa-b31d-128ec62da31a"),
+                            Id = new Guid("2d672f99-7ca5-420b-98a5-2dfc028f0e49"),
                             ElementType = 1,
                             LabTemplateId = new Guid("593a046b-d4f9-4110-a851-3e81a2871f7a"),
                             Number = 16,
@@ -535,7 +513,7 @@ namespace ReportBuilder.DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c3412fa2-ae10-4d7d-acfc-1573fc441995"),
+                            Id = new Guid("2651fded-caaf-4096-b8cb-2642be45fa18"),
                             ElementType = 1,
                             LabTemplateId = new Guid("593a046b-d4f9-4110-a851-3e81a2871f7a"),
                             Number = 19,
@@ -544,7 +522,7 @@ namespace ReportBuilder.DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c8f3a6b4-86b9-4dca-a721-a4673c37bbcf"),
+                            Id = new Guid("dba05c5d-2117-4aa7-bc4b-b0d9edc1ca90"),
                             ElementType = 1,
                             LabTemplateId = new Guid("593a046b-d4f9-4110-a851-3e81a2871f7a"),
                             Number = 21,
@@ -553,30 +531,12 @@ namespace ReportBuilder.DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9d6dadf6-8312-4adb-9c21-df07f8f9b0b4"),
+                            Id = new Guid("d59c841f-a25f-4c57-9da1-db8101ea7fdf"),
                             ElementType = 1,
                             LabTemplateId = new Guid("593a046b-d4f9-4110-a851-3e81a2871f7a"),
                             Number = 24,
                             Text = "График зависимости I=f(U)",
                             PictureNumber = 10
-                        },
-                        new
-                        {
-                            Id = new Guid("b71fd40f-5c7d-4132-99ce-2df23367ae28"),
-                            ElementType = 1,
-                            LabTemplateId = new Guid("3cfe4386-2c91-457e-a93b-ac90d7f4af4c"),
-                            Number = 1,
-                            Text = "Схема включения источника регулируемого напряжения",
-                            PictureNumber = 1
-                        },
-                        new
-                        {
-                            Id = new Guid("767876ea-39de-44f8-aa67-390f01d30c56"),
-                            ElementType = 1,
-                            LabTemplateId = new Guid("3cfe4386-2c91-457e-a93b-ac90d7f4af4c"),
-                            Number = 3,
-                            Text = "Схема исследования тахогенератора и энкодера",
-                            PictureNumber = 2
                         });
                 });
 
@@ -604,7 +564,7 @@ namespace ReportBuilder.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("c59eef27-af8c-4c12-aa80-8f7e9241b986"),
+                            Id = new Guid("7c7caf3f-f434-4ed8-ad01-e73e8ede9c20"),
                             ElementType = 2,
                             LabTemplateId = new Guid("593a046b-d4f9-4110-a851-3e81a2871f7a"),
                             Number = 2,
@@ -616,7 +576,7 @@ namespace ReportBuilder.DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a107d234-7a63-4477-a66d-4383efe9650a"),
+                            Id = new Guid("a9e7c479-ec78-4b40-a995-4c1a9619a27a"),
                             ElementType = 2,
                             LabTemplateId = new Guid("593a046b-d4f9-4110-a851-3e81a2871f7a"),
                             Number = 7,
@@ -628,7 +588,7 @@ namespace ReportBuilder.DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a4df223f-7813-4cb3-89b7-d82802b70754"),
+                            Id = new Guid("8f4cd9e7-e2e8-44bb-9350-6d674ef24c79"),
                             ElementType = 2,
                             LabTemplateId = new Guid("593a046b-d4f9-4110-a851-3e81a2871f7a"),
                             Number = 12,
@@ -640,7 +600,7 @@ namespace ReportBuilder.DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("bfcfaa07-8924-4531-bcfb-76ecef326424"),
+                            Id = new Guid("fc0bba91-22c7-4005-bddc-c7acaefd3879"),
                             ElementType = 2,
                             LabTemplateId = new Guid("593a046b-d4f9-4110-a851-3e81a2871f7a"),
                             Number = 17,
@@ -652,7 +612,7 @@ namespace ReportBuilder.DAL.Migrations
                         },
                         new
                         {
-                            Id = new Guid("678f70ba-b1bc-40a7-bf5f-094ef4d85a22"),
+                            Id = new Guid("6e5960cc-329a-45e4-a16c-ec01b6af9f1f"),
                             ElementType = 2,
                             LabTemplateId = new Guid("593a046b-d4f9-4110-a851-3e81a2871f7a"),
                             Number = 22,
@@ -661,18 +621,6 @@ namespace ReportBuilder.DAL.Migrations
                             RowsCount = 2,
                             TableNumber = 5,
                             VerticalTitles = "U,В;I,мА"
-                        },
-                        new
-                        {
-                            Id = new Guid("af5adaee-5bf8-405d-931d-2685593ba15f"),
-                            ElementType = 2,
-                            LabTemplateId = new Guid("3cfe4386-2c91-457e-a93b-ac90d7f4af4c"),
-                            Number = 5,
-                            Text = "Данные эксперимента",
-                            ColumnsCount = 5,
-                            HorizontalTitles = "№ п/п;U1;Uг,В;n,об/мин;nг,об/мин",
-                            RowsCount = 13,
-                            TableNumber = 1
                         });
                 });
 

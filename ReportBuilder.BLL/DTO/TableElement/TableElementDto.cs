@@ -10,5 +10,6 @@ namespace ReportBuilder.BLL.DTO.TableElement
         public int ColumnsCount { get; set; }
         public string? VerticalTitles { get; set; }
         public string? HorizontalTitles { get; set; }
+        public string[][]? Values { get; set; }
     }
 }

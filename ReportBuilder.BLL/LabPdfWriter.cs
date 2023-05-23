@@ -75,29 +75,59 @@ namespace ReportBuilder.BLL
                 {
                     var tableItem = fileInfo.TableElements.FirstOrDefault(x => x.Id.Equals(item.Id));
 
-                    PdfPTable table = new PdfPTable(tableItem.ColumnsCount);
+                    PdfPTable table;
 
                     if (tableItem.HorizontalTitles is null)
                     {
+                        table = new PdfPTable(tableItem.ColumnsCount + 1);
                         var titles = tableItem.VerticalTitles.Split(';');
+
                         for (int i = 0; i < tableItem.RowsCount; i++)
                         {
                             table.AddCell(new Phrase(titles[i], timesRegular));
-                            for (int j = 1; j < tableItem.ColumnsCount; j++)
+                            for (int j = 0; j < tableItem.ColumnsCount; j++)
                             {
-                                table.AddCell(new Phrase(" ", timesRegular));
+                                if (tableItem.Values is not null)
+                                {
+                                    table.AddCell(new Phrase(" " + tableItem.Values[i][j], timesRegular));
+                                }
+                                else
+                                {
+                                    table.AddCell(new Phrase(" ", timesRegular));
+                                }
                             }
                         }
                     }
                     else
                     {
+                        table = new PdfPTable(tableItem.ColumnsCount);
+                        var titles = tableItem.HorizontalTitles.Split(';');
 
+                        for (int i = 0; i < tableItem.ColumnsCount; i++)
+                        {
+                            table.AddCell(new Phrase(titles[i], timesRegular));
+                        }
+
+                        for (int i = 0; i < tableItem.RowsCount; i++)
+                        {
+                            for (int j = 0; j < tableItem.ColumnsCount; j++)
+                            {
+                                if (tableItem.Values is not null)
+                                {
+                                    table.AddCell(new Phrase(" " + tableItem.Values[i][j], timesRegular));
+                                }
+                                else
+                                {
+                                    table.AddCell(new Phrase(" ", timesRegular));
+                                }
+                            }
+                        }
                     }
 
                     Paragraph paragraph = new Paragraph("\n");
                     Phrase phrase = new Phrase
                     {
-                        new Chunk($"{Constants.Tab}Таблица {tableItem.Number} - {tableItem.Text}", timesRegular),
+                        new Chunk($"{Constants.Tab}Таблица {tableItem.TableNumber} - {tableItem.Text}", timesRegular),
                         table
                     };
                     paragraph.Add(phrase);
@@ -108,7 +138,7 @@ namespace ReportBuilder.BLL
                 {
                     var pictureItem = fileInfo.PictureElements.FirstOrDefault(x => x.Id.Equals(item.Id));
 
-                    Paragraph paragraph = new Paragraph($"\nРисунок {pictureItem.Number} - {pictureItem.Text}", timesRegular);
+                    Paragraph paragraph = new Paragraph($"Рисунок {pictureItem.PictureNumber} - {pictureItem.Text}", timesRegular);
                     paragraph.Alignment = Element.ALIGN_CENTER;
 
                     document.Add(new Paragraph("\n"));
@@ -118,7 +148,19 @@ namespace ReportBuilder.BLL
                         var picture = Image.GetInstance(new FileStream($"{fileInfo.PicturesPath}\\{pictureItem.FileName}", FileMode.Open));
 
                         var koef = picture.Height / picture.Width;
-                        picture.ScaleAbsolute(400f, 400f * koef);
+
+                        if (koef < 0.8 || koef > 1.2)
+                        {
+                            picture.ScaleAbsolute(300f, 300f * koef);
+                        }
+                        else if (picture.Width > picture.Height)
+                        {
+                            picture.ScaleAbsolute(400f, 400f * koef);
+                        }
+                        else
+                        {
+                            picture.ScaleAbsolute(400f * koef, 400f);
+                        }
 
                         picture.Alignment = Element.ALIGN_CENTER;
 

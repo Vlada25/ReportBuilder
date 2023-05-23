@@ -6,5 +6,6 @@ namespace ReportBuilder.API.Requests
     {
         public PersonalData PersonalData { get; set; }
         public PictureElementRequest[] PictureElements { get; set; }
+        public TableElementRequest[] TableElements { get; set; }
 }
 }
